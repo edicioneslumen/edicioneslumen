@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Ediciones Lumen | Libros que iluminan el corazón y transforman vidas</title>
+  <meta name="description" content="Ediciones Lumen es un sello editorial independiente dedicado a la divulgación, investigación y formación en psicología, neurociencia, filosofía, historia y estudios bíblicos.">
+  <meta name="keywords" content="Ediciones Lumen, libros, editorial independiente, fe y ciencia, psicología bíblica, apologética, el cerebro que jehova diseño, las 95 tesis psico cristianas, el arte de renovar la mente, luz progresiva, las emociones en la biblia">
+  <meta name="author" content="Ediciones Lumen">
+  <meta name="robots" content="index, follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --bg-main: #090c10;
+      --bg-card: rgba(18, 24, 33, 0.78);
+      --bg-card-hover: rgba(26, 35, 48, 0.95);
+      --accent-gold: #e2b053;
+      --accent-gold-light: #fbe39d;
+      --accent-glow: rgba(226, 176, 83, 0.28);
+      --text-primary: #f0f4f8;
+      --text-secondary: #94a3b8;
+      --border-subtle: rgba(226, 176, 83, 0.25);
+      --border-light: rgba(255, 255, 255, 0.08);
+      --font-title: 'Cinzel', serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(226, 176, 83, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 85% 65%, rgba(56, 102, 148, 0.08) 0%, transparent 45%);
+      background-attachment: fixed;
+    }
+
+    /* BARRA DE NAVEGACIÓN */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      background: rgba(9, 12, 16, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    .brand-icon {
+      color: var(--accent-gold);
+      width: 28px;
+      height: 28px;
+    }
+
+    .brand-name {
+      font-family: var(--font-title);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      background: linear-gradient(135deg, #ffffff, var(--accent-gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.8rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: var(--transition);
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--accent-gold);
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, #c79532, var(--accent-gold));
+      color: #0c0e12;
+      padding: 0.55rem 1.3rem;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 15px var(--accent-glow);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(226, 176, 83, 0.4);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    /* CONTROL DE VISTAS */
+    .view-page {
+      display: block;
+    }
+
+    .view-page.hidden-view {
+      display: none !important;
+    }
+
+    /* SECCIONES TIPO HOJA COMPLETA */
+    .page-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 7rem 2rem 4rem;
+      position: relative;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-tag {
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 2.2px;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-title);
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+      color: #ffffff;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+    }
+
+    /* HERO CON FONDO fondo.jpeg */
+    #inicio {
+      background: 
+        linear-gradient(180deg, rgba(9, 12, 16, 0.82) 0%, rgba(9, 12, 16, 0.7) 50%, rgba(9, 12, 16, 0.95) 100%),
+        radial-gradient(circle at 50% 35%, rgba(226, 176, 83, 0.16) 0%, transparent 65%),
+        url('fondo.jpeg') center center / cover no-repeat fixed;
+      position: relative;
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      background: rgba(226, 176, 83, 0.15);
+      border: 1px solid var(--border-subtle);
+      color: var(--accent-gold-light);
+      font-size: 0.88rem;
+      margin-bottom: 1.8rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-title {
+      font-family: var(--font-title);
+      font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #ffffff 20%, var(--accent-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-quote {
+      font-size: clamp(1.2rem, 2vw, 1.45rem);
+      color: var(--accent-gold-light);
+      font-style: italic;
+      margin-bottom: 1.8rem;
+      font-family: var(--font-title);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-desc {
+      color: var(--text-primary);
+      opacity: 0.9;
+      font-size: 1.12rem;
+      margin-bottom: 2.8rem;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.85rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: var(--transition);
+      cursor: pointer;
+      font-size: 0.95rem;
+      border: none;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #dfa947, var(--accent-gold));
+      color: #0b0d11;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(226, 176, 83, 0.45);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-primary);
+      border: 1px solid var(--border-light);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent-gold);
+      background: rgba(226, 176, 83, 0.12);
+      transform: translateY(-3px);
+    }
+
+    /* GRID Y CARDS */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 18px;
+      padding: 2.2rem;
+      backdrop-filter: blur(12px);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-subtle);
+      background: var(--bg-card-hover);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(226, 176, 83, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-gold);
+      margin-bottom: 1.3rem;
+    }
+
+    .card-title {
+      font-family: var(--font-title);
+      font-size: 1.28rem;
+      margin-bottom: 0.9rem;
+      color: #fff;
+    }
+
+    .card-text {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .split-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .quote-box {
+      background: linear-gradient(145deg, rgba(226, 176, 83, 0.08), rgba(9, 12, 16, 0.8));
+      border-left: 4px solid var(--accent-gold);
+      padding: 2rem;
+      border-radius: 0 16px 16px 0;
+      margin-top: 1.8rem;
+    }
+
+    .quote-box p {
+      font-style: italic;
+      color: var(--accent-gold-light);
+      font-size: 1.15rem;
+    }
+
+    /* PÁGINA TOTALMENTE APARTE DE LIBROS */
+    .books-page-wrapper {
+      min-height: 100vh;
+      padding: 7rem 2rem 5rem;
+      background: radial-gradient(circle at 50% 20%, rgba(226, 176, 83, 0.09) 0%, transparent 55%);
+    }
+
+    .books-page-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2.2rem;
+    }
+
+    .book-item {
+      cursor: pointer;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      transition: var(--transition);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .book-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: var(--accent-gold);
+      box-shadow: 0 16px 35px rgba(226, 176, 83, 0.28);
+    }
+
+    .book-cover-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 152%;
+      overflow: hidden;
+      background: #141b24;
+    }
+
+    .book-cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .book-item:hover .book-cover {
+      transform: scale(1.06);
+    }
+
+    .book-hover-badge {
+      position: absolute;
+      inset: 0;
+      background: rgba(9, 12, 16, 0.75);
+      backdrop-filter: blur(4px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      opacity: 0;
+      transition: var(--transition);
+      color: var(--accent-gold);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .book-item:hover .book-hover-badge {
+      opacity: 1;
+    }
+
+    .book-info {
+      padding: 1.3rem;
+      text-align: center;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .book-title {
+      font-family: var(--font-title);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.4rem;
+      line-height: 1.35;
+    }
+
+    .book-tag {
+      font-size: 0.8rem;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* MODAL DE LIBROS */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 6, 9, 0.88);
+      backdrop-filter: blur(12px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      background: #0f151e;
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      max-width: 860px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+      position: relative;
+      transform: scale(0.95);
+      transition: var(--transition);
+    }
+
+    .modal-backdrop.open .modal-box {
+      transform: scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      z-index: 10;
+    }
+
+    .modal-close:hover {
+      background: var(--accent-gold);
+      color: #000;
+    }
+
+    .modal-cover-wrap {
+      background: #080a0e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.8rem;
+    }
+
+    .modal-cover-wrap img {
+      max-width: 100%;
+      max-height: 440px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      object-fit: cover;
+    }
+
+    .modal-details {
+      padding: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .modal-category {
+      color: var(--accent-gold);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-title {
+      font-family: var(--font-title);
+      font-size: 1.8rem;
+      line-height: 1.25;
+      margin-bottom: 0.6rem;
+      color: #fff;
+    }
+
+    .modal-subtitle {
+      color: var(--accent-gold-light);
+      font-style: italic;
+      margin-bottom: 1.3rem;
+      font-size: 1.05rem;
+    }
+
+    .modal-synopsis {
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+      line-height: 1.7;
+      margin-bottom: 1.8rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.1rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .feature-item i {
+      color: var(--accent-gold);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* CONTACTO */
+    .contact-card {
+      background: linear-gradient(145deg, rgba(226, 176, 83, 0.08), rgba(15, 21, 30, 0.95));
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 3.5rem 2rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contact-phone {
+      font-family: var(--font-title);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin: 1.5rem 0;
+      text-decoration: none;
+      display: inline-block;
+      letter-spacing: 2px;
+      transition: var(--transition);
+    }
+
+    .contact-phone:hover {
+      color: var(--accent-gold-light);
+      transform: scale(1.03);
+    }
+
+    /* FOOTER */
+    .footer {
+      padding: 3.5rem 2rem 2rem;
+      background: #05070a;
+      border-top: 1px solid var(--border-light);
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: var(--font-title);
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      color: var(--accent-gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-motto {
+      font-style: italic;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-copy {
+      color: #556171;
+      font-size: 0.85rem;
+    }
+
+    /* ANIMACIONES */
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: 0.15s; }
+    .delay-2 { transition-delay: 0.25s; }
+    .delay-3 { transition-delay: 0.35s; }
+    .delay-4 { transition-delay: 0.45s; }
+    .delay-5 { transition-delay: 0.55s; }
+
+    /* RESPONSIVIDAD */
+    @media (max-width: 1024px) {
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .split-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    @media (max-width: 768px) {
+      .navbar { padding: 1rem 1.2rem; }
+      .menu-toggle { display: block; }
+      .nav-links {
+        position: fixed;
+        top: 68px;
+        left: 0;
+        width: 100%;
+        background: rgba(9, 12, 16, 0.98);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        padding: 2rem 1rem;
+        gap: 1.3rem;
+        border-bottom: 1px solid var(--border-light);
+        transform: translateY(-120%);
+        transition: transform 0.4s ease;
+      }
+      .nav-links.mobile-open {
+        transform: translateY(0);
+      }
+      .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+      }
+      .feature-list {
+        grid-template-columns: 1fr;
+      }
+      .page-section {
+        padding: 5.5rem 1.2rem 3.5rem;
+      }
+      .modal-box {
+        grid-template-columns: 1fr;
+        max-height: 85vh;
+      }
+      .modal-cover-wrap {
+        padding: 1.2rem;
+      }
+      .modal-cover-wrap img {
+        max-height: 260px;
+      }
+      .modal-details {
+        padding: 1.4rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .brand-name { font-size: 1.1rem; }
+      .hero-title { font-size: 2.1rem; }
+      .btn { width: 100%; justify-content: center; }
+    }
+
+    @media (min-width: 1800px) {
+      .container { max-width: 1540px; }
+      body { font-size: 1.15rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE NAVEGACIÓN -->
+  <header>
+    <nav class="navbar" aria-label="Navegación principal">
+      <div onclick="navigateTo('main')" class="brand">
+        <i data-lucide="book-marked" class="brand-icon"></i>
+        <span class="brand-name">EDICIONES LUMEN</span>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <i data-lucide="menu" id="menuIcon"></i>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><button onclick="navigateTo('main', 'inicio')" class="nav-link">Inicio</button></li>
+        <li><button onclick="navigateTo('main', 'editorial')" class="nav-link">Nosotros</button></li>
+        <li><button onclick="navigateTo('main', 'mision-vision')" class="nav-link">Misión y Visión</button></li>
+        <li><button onclick="navigateTo('main', 'areas')" class="nav-link">Áreas</button></li>
+        <li><button onclick="navigateTo('main', 'servicios')" class="nav-link">Servicios</button></li>
+        <li><button onclick="navigateTo('books')" class="nav-link" style="color: var(--accent-gold); font-weight: 700;">Libros</button></li>
+        <li><a href="https://wa.me/522211983913?text=Hola,%20me%20gustaría%20ponerme%20en%20contacto%20con%20Ediciones%20Lumen" target="_blank" rel="noopener noreferrer" class="nav-cta"><i data-lucide="phone" style="width: 16px;"></i> Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ============================================== -->
+  <!-- VISTA 1: PÁGINA PRINCIPAL INSTITUCIONAL       -->
+  <!-- ============================================== -->
+  <div id="mainPageView" class="view-page">
+    <main>
+      <!-- HOJA 1: HERO / INICIO CON FONDO fondo.jpeg -->
+      <section id="inicio" class="page-section">
+        <div class="container hero-content">
+          <div class="hero-badge reveal">
+            Sello Editorial Independiente
+          </div>
+          <h1 class="hero-title reveal delay-1">
+            Rigor Académico, <span>Fe y Pensamiento Crítico</span>
+          </h1>
+          <p class="hero-quote reveal delay-2">
+            “Libros que iluminan el corazón y transforman vidas”
+          </p>
+          <p class="hero-desc reveal delay-3">
+            Un espacio donde el pensamiento científico, el análisis histórico y la reflexión filosófica convergen para aportar obras de alto valor intelectual, accesibles a todo público.
+          </p>
+          <div class="hero-actions reveal delay-4">
+            <button onclick="navigateTo('books')" class="btn btn-primary">
+              <i data-lucide="library" style="width: 18px;"></i> Libros
+            </button>
+            <a href="https://wa.me/522211983913?text=Hola,%20me%20gustaría%20ponerme%20en%20contacto%20con%20Ediciones%20Lumen" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+              <i data-lucide="message-square" style="width: 18px;"></i> Contacto
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOJA 2: PRESENTACIÓN Y VALORES -->
+      <section id="editorial" class="page-section">
+        <div class="container">
+          <div class="split-layout">
+            <div class="reveal">
+              <span class="section-tag">Presentación Institucional</span>
+              <h2 class="section-title">Ediciones Lumen</h2>
+              <p style="margin-bottom: 1.2rem; color: var(--text-secondary);">
+                Ediciones Lumen es un sello editorial independiente dedicado a la publicación de obras de divulgación, investigación y formación en las áreas de psicología, neurociencia, filosofía, historia, religión y estudios bíblicos.
+              </p>
+              <p style="color: var(--text-secondary); margin-bottom: 1.2rem;">
+                Ofrecemos publicaciones fundamentadas con rigor académico, claridad expositiva y una perspectiva crítica, facilitando el acceso del público a contenidos de alto valor formativo y espiritual.
+              </p>
+              <div class="quote-box">
+                <p>
+                  "Entendemos el libro como un instrumento de formación, reflexión e investigación que conecta el conocimiento especializado con el corazón de cada lector."
+                </p>
+              </div>
+            </div>
+
+            <div class="card reveal delay-1" style="border-color: var(--border-subtle);">
+              <div class="card-icon"><i data-lucide="award"></i></div>
+              <h3 class="card-title">Valores Editoriales</h3>
+              <ul class="feature-list" style="margin-top: 1.5rem;">
+                <li class="feature-item"><i data-lucide="check-circle-2"></i> Integridad intelectual</li>
+                <li class="feature-item"><i data-lucide="check-circle-2"></i> Rigor documental</li>
+                <li class="feature-item"><i data-lucide="check-circle-2"></i> Honestidad académica</li>
+                <li class="feature-item"><i data-lucide="check-circle-2"></i> Respeto por las fuentes</li>
+                <li class="feature-item"><i data-lucide="check-circle-2"></i> Excelencia editorial</li>
+                <li class="feature-item"><i data-lucide="check-circle-2"></i> Innovación constante</li>
+                <li class="feature-item"><i data-lucide="check-circle-2"></i> Accesibilidad del saber</li>
+                <li class="feature-item"><i data-lucide="check-circle-2"></i> Compromiso con el lector</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOJA 3: MISIÓN, VISIÓN Y COMPROMISO -->
+      <section id="mision-vision" class="page-section">
+        <div class="container">
+          <div class="section-header reveal">
+            <span class="section-tag">Dirección Estratégica</span>
+            <h2 class="section-title">Misión, Visión y Compromiso</h2>
+            <p class="section-subtitle">Pilares éticos y metodológicos que respaldan cada proyecto editorial.</p>
+          </div>
+
+          <div class="grid-3">
+            <div class="card reveal delay-1">
+              <div class="card-icon"><i data-lucide="target"></i></div>
+              <h3 class="card-title">Nuestra Misión</h3>
+              <p class="card-text">
+                Publicar libros de calidad que fomenten el pensamiento crítico, el aprendizaje continuo y la difusión del conocimiento mediante investigaciones fundamentadas, referencias verificables y una presentación profesional.
+              </p>
+            </div>
+
+            <div class="card reveal delay-2">
+              <div class="card-icon"><i data-lucide="compass"></i></div>
+              <h3 class="card-title">Nuestra Visión</h3>
+              <p class="card-text">
+                Consolidarse como una editorial de referencia en el ámbito hispanohablante por la calidad de sus publicaciones, el compromiso con la precisión documental y la producción de obras de alto aporte cultural.
+              </p>
+            </div>
+
+            <div class="card reveal delay-3">
+              <div class="card-icon"><i data-lucide="shield-check"></i></div>
+              <h3 class="card-title">Compromiso Editorial</h3>
+              <p class="card-text">
+                Uso de fuentes confiables, citación de textos primarios, claridad expositiva, respeto a los derechos de autor y un exhaustivo control de calidad ortotipográfico y de diseño.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOJA 4: ÁREAS Y PÚBLICO -->
+      <section id="areas" class="page-section">
+        <div class="container">
+          <div class="section-header reveal">
+            <span class="section-tag">Líneas Temáticas</span>
+            <h2 class="section-title">Áreas de Publicación</h2>
+            <p class="section-subtitle">Disciplinas abordadas con enfoque integral, rigor científico y honestidad histórica.</p>
+          </div>
+
+          <div class="grid-4">
+            <div class="card reveal delay-1">
+              <div class="card-icon"><i data-lucide="brain"></i></div>
+              <h3 class="card-title">Psicología & Neurociencia</h3>
+              <p class="card-text">Ciencias cognitivas, conducta y desarrollo personal respaldado por evidencia y bienestar emocional.</p>
+            </div>
+
+            <div class="card reveal delay-2">
+              <div class="card-icon"><i data-lucide="scroll"></i></div>
+              <h3 class="card-title">Filosofía & Teología</h3>
+              <p class="card-text">Filosofía de la religión, pensamiento crítico, ética y diálogo reflexivo interdisciplinario.</p>
+            </div>
+
+            <div class="card reveal delay-3">
+              <div class="card-icon"><i data-lucide="book-open-check"></i></div>
+              <h3 class="card-title">Estudios Bíblicos</h3>
+              <p class="card-text">Historia del cristianismo, análisis de manuscritos, apologética fundamentada y exégesis textual.</p>
+            </div>
+
+            <div class="card reveal delay-4">
+              <div class="card-icon"><i data-lucide="feather"></i></div>
+              <h3 class="card-title">Ensayo & Divulgación</h3>
+              <p class="card-text">Obras accesibles para conectar la investigación especializada con la vida práctica del lector.</p>
+            </div>
+          </div>
+
+          <div class="card reveal delay-2" style="margin-top: 2.5rem; background: rgba(18, 24, 33, 0.5);">
+            <h3 class="card-title" style="text-align: center; margin-bottom: 1.5rem;">Público Objetivo</h3>
+            <ul class="feature-list">
+              <li class="feature-item"><i data-lucide="users"></i> Estudiantes universitarios y profesionales.</li>
+              <li class="feature-item"><i data-lucide="microscope"></i> Investigadores, académicos y docentes.</li>
+              <li class="feature-item"><i data-lucide="church"></i> Ministros religiosos y estudiantes de la Biblia.</li>
+              <li class="feature-item"><i data-lucide="sparkle"></i> Lectores interesados en la relación armónica entre fe, historia y ciencia.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOJA 5: SERVICIOS EDITORIALES -->
+      <section id="servicios" class="page-section">
+        <div class="container">
+          <div class="section-header reveal">
+            <span class="section-tag">Publicación Profesional</span>
+            <h2 class="section-title">Servicios Editoriales</h2>
+            <p class="section-subtitle">Acompañamiento especializado para autores e investigadores independientes.</p>
+          </div>
+
+          <div class="grid-3">
+            <div class="card reveal delay-1">
+              <div class="card-icon"><i data-lucide="file-edit"></i></div>
+              <h3 class="card-title">Edición & Corrección</h3>
+              <p class="card-text">Corrección ortotipográfica y de estilo, revisión académica, elaboración de bibliografías, notas al pie y aparato crítico.</p>
+            </div>
+
+            <div class="card reveal delay-2">
+              <div class="card-icon"><i data-lucide="layout"></i></div>
+              <h3 class="card-title">Diseño & Maquetación</h3>
+              <p class="card-text">Diseño de portadas atractivas, diagramación profesional para impresión y maquetación en formatos digitales estándar.</p>
+            </div>
+
+            <div class="card reveal delay-3">
+              <div class="card-icon"><i data-lucide="check-square"></i></div>
+              <h3 class="card-title">Gestión Legal & Asesoría</h3>
+              <p class="card-text">Tramitación oficial de ISBN, registro de derechos de autor y asesoría personalizada en el proceso de autopublicación.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOJA 6: CONTACTO -->
+      <section id="contacto" class="page-section">
+        <div class="container">
+          <div class="contact-card reveal">
+            <h2 class="section-title">Contáctanos</h2>
+            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+              ¿Deseas informes sobre la adquisición de libros o presentar tu manuscrito? Comunícate directamente con nuestro equipo.
+            </p>
+            
+            <a href="tel:2211983913" class="contact-phone">2211983913</a>
+
+            <div>
+              <a href="https://wa.me/522211983913?text=Hola,%20me%20gustaría%20ponerme%20en%20contacto%20con%20Ediciones%20Lumen" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-right: 0.8rem; margin-bottom: 0.8rem;">
+                <i data-lucide="message-circle"></i> Mensaje por WhatsApp
+              </a>
+              <a href="tel:2211983913" class="btn btn-secondary" style="margin-bottom: 0.8rem;">
+                <i data-lucide="phone-call"></i> Llamada Telefónica
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- VISTA 2: PÁGINA TOTALMENTE APARTE DE LIBROS   -->
+  <!-- ============================================== -->
+  <div id="booksPageView" class="view-page hidden-view">
+    <div class="books-page-wrapper">
+      <div class="container">
+        
+        <div class="books-page-nav">
+          <button onclick="navigateTo('main', 'inicio')" class="btn btn-secondary">
+            <i data-lucide="arrow-left"></i> Volver al Inicio
+          </button>
+          <span class="section-tag" style="margin: 0;">Ediciones Lumen</span>
+        </div>
+
+        <div class="section-header">
+          <h1 class="section-title">Libros</h1>
+          <p class="section-subtitle">
+            Haz clic en cualquiera de las portadas para abrir su descripción completa, detalles de contenido y ficha técnica.
+          </p>
+        </div>
+
+        <!-- LISTADO DE LIBROS EN ORDEN ALFABÉTICO (15 OBRAS DE TU CARPETA) -->
+        <div class="books-grid">
+
+          <!-- 1. Creer y Sanar -->
+          <article class="book-item reveal delay-1" onclick="openBookModal('creer-sanar')">
+            <div class="book-cover-wrap">
+              <img src="creerysanar.jpeg" alt="Portada Creer y Sanar: Una mirada psicológica desde adentro" class="book-cover" loading="lazy">
+              <div class="book-hover-badge">
+                <i data-lucide="book-open"></i>
+                <span>Ver Detalles</span>
+              </div>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">Creer y Sanar</h3>
+              <span class="book-tag">Salud Mental & Espiritualidad</span>
+            </div>
+          </article>
+
+          <!-- 2. Defendiendo la Fe -->
+          <article class="book-item reveal delay-2" onclick="openBookModal('defendiendo-fe')">
+            <div class="book-cover-wrap">
+              <img src="defendiendolafe.jpeg" alt="Portada Defendiendo la Fe" class="book-cover" loading="lazy">
+              <div class="book-hover-badge">
+                <i data-lucide="book-open"></i>
+                <span>Ver Detalles</span>
+              </div>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">Defendiendo la Fe</h3>
+              <span class="book-tag">Apologética Bíblica</span>
+            </div>
+          </article>
+
+          <!-- 3. El Antiguo Testamento citado por Jesús -->
+          <article class="book-item reveal delay-3" onclick="openBookModal('antiguo-testamento-jesus')">
+            <div class="book-cover-wrap">
+              <img src="elantiguotestamentocitadoporjesus.jpeg" alt="Portada El Antiguo Testamento citado por Jesús" class="book-cover" loading="lazy">
+              <div class="book-hover-badge">
+                <i data-lucide="book-open"></i>
+                <span>Ver Detalles</span>
+              </div>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">El Antiguo Testamento citado por Jesús</h3>
+              <span class="book-tag">Estudios Bíblicos</span>
+            </div>
+          </article>
+
+          <!-- 4. El Arte de Renovar la Mente -->
+          <article class="book-item reveal delay-4" onclick="openBookModal('el-arte-de-renovar-la-mente')">
+            <div class="book-cover-wrap">
+              <img src="elartederenovarlamente.jpeg" alt="Portada El Arte de Renovar la Mente" class="book-cover" loading="lazy">
+              <div class="book-hover-badge">
+                <i data-lucide="book-open"></i>
+                <span>Ver Detalles</span>
+              </div>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">El Arte de Renovar la Mente</h3>
+              <span class="book-tag">Neuroplasticidad & Hábitos</span>
+            </div>
+          </article>
+
+          <!-- 5. El Cerebro que Jehová Diseñó -->
+          <article class="book-item reveal delay-5" onclick="openBookModal('cerebro-jehova-diseno')">
+            <div class="book-cover-wrap">
+              <img src="elcerebroquejehovadiseño.jpeg" alt="Portada El Cerebro que Jehová Diseñó" class="book-cover" loading="lazy">
+              <div class="book-hover-badge">
+                <i data-lucide="book-open"></i>
+                <span>Ver Detalles</span>
+              </div>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">El Cerebro que Jehová Diseñó</h3>
+              <span class="book-tag">Neurociencia & Sabiduría Bíblica</span>
+            </div>
+          </article>
+
+          <!-- 6. El Noviazgo: Una Escuela de Sabiduría -->
+          <article class="book-item reveal delay-1" onclick="openBookModal('noviazgo')">
+            <div class="book-cover-wrap">
+              <img src="elnoviazgounaescueladesabiduria.jpeg" alt="Portada El noviazgo: una escuela de sabiduría, no una sentencia de matrimonio" class="book-cover" loading="lazy">
+              <div class="book-hover-badge">
+                <i data-lucide="book-open"></i>
+                <span>Ver Detalles</span>
+              </div>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">El Noviazgo: Una Escuela de Sabiduría</h3>
+              <span class="book-tag">Psicología & Relaciones</span>
+            </div>
+          </article>
+
+          <!-- 7. En Defensa de la Traducción del Nuevo Mundo -->
+          <article class="book-item reveal delay-2" onclick="openBookModal('defensa-traduccion')">
+            <div class="book-cover-wrap">
+              <img src="endefensadelatraducciondelnuevomundo.jpeg" alt="Portada En Defensa de la Traducción del Nuevo Mundo" class="book-cover" loading="lazy">
+              <div class="book-hover-badge">
+                <i data-lucide="book-open"></i>
+                <span>Ver Detalles</span>
+              </div>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">En Defensa de la Traducción del Nuevo Mundo</h3>
+              <span class="book-tag">Crítica Textual</span>
+            </div>
+          </article>
+
+          <!-- 8. Entre la Ciencia y la Fe -->
+          <article class="book-item reveal delay-3" onclick="openBookModal('ciencia-fe')">
+            <div class="book-cover-wrap">
+              <img src="entrelacienciaylafe.jpeg" alt="Portada Entre la Ciencia y la Fe: Una mirada psicológica a la Biblia" class="book-cover" loading="lazy">
+              <div class="book-hover-badge">
+                <i data-lucide="book-open"></i>
+                <span>Ver Detalles</span>
+              </div>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">Entre la Ciencia y la Fe</h3>
+              <span class="book-tag">Ciencia & Biblia</span>
+            </div>
+          </article>
+
+          <!-- 9. Errores Psicológicos que Destruyen la Fe -->
+          <article class="book-item reveal delay-4" onclick="openBookModal('errores-psicologicos')">
+            <div class="book-cover-wrap">
+              <img src="errorespsicologicosquedestruyenlafe.jpeg" alt="Portada Errores Psicológicos que Destruyen la Fe" class="book-cover" loading="lazy">
+              <div class="book-hover-badge">
+                <i data-lucide="book-open"></i>
+                <span>Ver Detalles</span>
+              </div>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">Errores Psicológicos que Destruyen la Fe</h3>
+              <span class="book-tag">Ciencias Cognitivas & Conciencia</span>
+            </div>
+          </article>
+
+          <!-- 10. Las 95 Tesis Psico Cristianas -->
+          <article class="book-item reveal delay-5" onclick="openBookModal('95-tesis')">
+            <div class="book-cover-wrap">
+              <img src="las95tesis.jpeg" alt="Portada Las 95 Tesis Psico Cristianas" class="book-cover" loading="lazy">
+              <div class="book-hover-badge">
+                <i data-lucide="book-open"></i>
+                <span>Ver Detalles</span>
+              </div>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">Las 95 Tesis Psico Cristianas</h3>
+              <span class="book-tag">Psicología & Vida Cristiana</span>
+            </div>
+          </article>
+
+          <!-- 11. Las Emociones en la Biblia -->
+          <article class="book-item reveal delay-1" onclick="openBookModal('emociones-biblia')">
+            <div class="book-cover-wrap">
+              <img src="lasemocionesenlabiblia.jpeg" alt="Portada Las Emociones en la Biblia" class="book-cover" loading="lazy">
+              <div class="book-hover-badge">
+                <i data-lucide="book-open"></i>
+                <span>Ver Detalles</span>
+              </div>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">Las Emociones en la Biblia</h3>
+              <span class="book-tag">Psicología Clínica & Fe</span>
+            </div>
+          </article>
+
+          <!-- 12. La Psicología de la Esperanza -->
+          <article class="book-item reveal delay-2" onclick="openBookModal('psicologia-esperanza')">
+            <div class="book-cover-wrap">
+              <img src="lapsicologiadelaesperanza.jpeg" alt="Portada La Psicología de la Esperanza" class="book-cover" loading="lazy">
+              <div class="book-hover-badge">
+                <i data-lucide="book-open"></i>
+                <span>Ver Detalles</span>
+              </div>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">La Psicología de la Esperanza</h3>
+              <span class="book-tag">Neurociencia & Resiliencia</span>
+            </div>
+          </article>
+
+          <!-- 13. Luz Progresiva (Primera Edición) -->
+          <article class="book-item reveal delay-3" onclick="openBookModal('luz-progresiva-primera')">
+            <div class="book-cover-wrap">
+              <img src="luzprogresivaprimera.jpeg" alt="Portada Luz Progresiva: Historia, psicología y doctrina en los Testigos de Jehová" class="book-cover" loading="lazy">
+              <div class="book-hover-badge">
+                <i data-lucide="book-open"></i>
+                <span>Ver Detalles</span>
+              </div>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">Luz Progresiva</h3>
+              <span class="book-tag">Historia, Psicología & Doctrina</span>
+            </div>
+          </article>
+
+          <!-- 14. Luz Progresiva (Segunda Edición) -->
+          <article class="book-item reveal delay-4" onclick="openBookModal('luz-progresiva-segunda')">
+            <div class="book-cover-wrap">
+              <img src="luzprogesivasegunda.jpeg" alt="Portada Luz Progresiva: Segunda Edición Corregido y Ampliado" class="book-cover" loading="lazy">
+              <div class="book-hover-badge">
+                <i data-lucide="book-open"></i>
+                <span>Ver Detalles</span>
+              </div>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">Luz Progresiva (Segunda Edición)</h3>
+              <span class="book-tag">Edición Corregida & Ampliada</span>
+            </div>
+          </article>
+
+          <!-- 15. Para creer en la Unicidad y en la Trinidad -->
+          <article class="book-item reveal delay-5" onclick="openBookModal('unicidad-trinidad')">
+            <div class="book-cover-wrap">
+              <img src="paracreerenlaunicidad.jpeg" alt="Portada Para creer en la Unicidad y en la Trinidad hay que ser Politeísta" class="book-cover" loading="lazy">
+              <div class="book-hover-badge">
+                <i data-lucide="book-open"></i>
+                <span>Ver Detalles</span>
+              </div>
+            </div>
+            <div class="book-info">
+              <h3 class="book-title">Para creer en la Unicidad y en la Trinidad</h3>
+              <span class="book-tag">Historia, Filosofía & Teología</span>
+            </div>
+          </article>
+
+        </div>
+
+        <div style="text-align: center; margin-top: 4.5rem;">
+          <a href="https://wa.me/522211983913?text=Hola,%20me%20gustaría%20solicitar%20información%20sobre%20los%20libros%20de%20Ediciones%20Lumen" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <i data-lucide="phone"></i> Solicitar Títulos por WhatsApp
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE DESCRIPCIÓN DE LIBROS -->
+  <div class="modal-backdrop" id="bookModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeBookModal()" aria-label="Cerrar ventana">
+        <i data-lucide="x"></i>
+      </button>
+      <div class="modal-cover-wrap">
+        <img id="modalImg" src="" alt="Portada del libro">
+      </div>
+      <div class="modal-details">
+        <span class="modal-category" id="modalCategory">Línea de Publicación</span>
+        <h3 class="modal-title" id="modalTitle">Título de la Obra</h3>
+        <p class="modal-subtitle" id="modalSubtitle">Subtítulo</p>
+        <p class="modal-synopsis" id="modalSynopsis">Descripción del libro.</p>
+        <div>
+          <a href="#" id="modalCta" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <i data-lucide="shopping-bag" style="width: 17px;"></i> Solicitar este libro por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand">EDICIONES LUMEN</div>
+      <p class="footer-motto">“Libros que iluminan el corazón y transforman vidas”</p>
+      <p class="footer-copy">© Ediciones Lumen. Teléfono de contacto: 2211983913. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT: CONTROL DE VISTAS, MODAL Y ANIMACIONES -->
+  <script>
+    lucide.createIcons();
+
+    // Navegación entre la Página Principal y la Página de Libros
+    const mainPageView = document.getElementById('mainPageView');
+    const booksPageView = document.getElementById('booksPageView');
+    const navLinks = document.getElementById('navLinks');
+    const menuToggle = document.getElementById('menuToggle');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('mobile-open');
+    });
+
+    function navigateTo(view, sectionId = null) {
+      navLinks.classList.remove('mobile-open');
+
+      if (view === 'books') {
+        mainPageView.classList.add('hidden-view');
+        booksPageView.classList.remove('hidden-view');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        observeReveals();
+      } else {
+        booksPageView.classList.add('hidden-view');
+        mainPageView.classList.remove('hidden-view');
+        
+        if (sectionId) {
+          setTimeout(() => {
+            const target = document.getElementById(sectionId);
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+          }, 50);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        observeReveals();
+      }
+      lucide.createIcons();
+    }
+
+    // Animaciones al entrar por primera vez
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.12,
+      rootMargin: "0px 0px -40px 0px"
+    });
+
+    function observeReveals() {
+      document.querySelectorAll('.reveal:not(.active)').forEach(el => revealObserver.observe(el));
+    }
+
+    observeReveals();
+
+    // Base de datos de los 15 libros existentes en la carpeta
+    const booksData = {
+      'creer-sanar': {
+        title: "Creer y Sanar: Una Mirada Psicológica desde Adentro",
+        subtitle: "¿Puede la fe ser una herramienta para sanar heridas emocionales?",
+        category: "Salud Mental & Espiritualidad",
+        image: "creerysanar.jpeg",
+        synopsis: "Una obra que explora cómo la espiritualidad y la psicología trabajan unidas para sanar y vigorizar el bienestar mental. A través de un enfoque integral y reflexiones profundas, revela cómo la creencia consciente conduce al autoconocimiento, la sanación interior y una vida plena y equilibrada."
+      },
+      'defendiendo-fe': {
+        title: "Defendiendo la Fe: Respuestas Bíblicas a las Críticas más Comunes contra los Testigos de Jehová",
+        subtitle: "Razones para creer: una apologética bíblica documentada",
+        category: "Apologética & Estudios Bíblicos",
+        image: "defendiendolafe.jpeg",
+        synopsis: "En un entorno donde abundan los prejuicios y la desinformación, esta obra presenta explicaciones claras, lógicas y respetuosas fundamentadas en la Biblia y fuentes históricas. Brinda herramientas para fortalecer la fe personal y dialogar constructivamente con serenidad y base documental."
+      },
+      'antiguo-testamento-jesus': {
+        title: "El Antiguo Testamento citado por Jesús",
+        subtitle: "Las Escrituras Hebreo-Arameas en las enseñanzas del Mesías",
+        category: "Estudios Bíblicos & Exégesis",
+        image: "elantiguotestamentocitadoporjesus.jpeg",
+        synopsis: "Jesús fundamentó sus enseñanzas en la Ley, los Profetas y los Escritos sagrados que Israel recibió durante siglos. Este libro examina más de 300 citas y alusiones organizadas por libro bíblico, analizando el contexto original, su trasfondo histórico y lingüístico hebreo, y el cumplimiento de las profecías mesiánicas."
+      },
+      'el-arte-de-renovar-la-mente': {
+        title: "El Arte de Renovar la Mente: Transforma tu Pensamiento, Transforma tu Vida",
+        subtitle: "Guía práctica y profunda basada en la sabiduría bíblica y la ciencia del comportamiento",
+        category: "Neuroplasticidad & Terapia Cognitiva",
+        image: "elartederenovarlamente.jpeg",
+        synopsis: "Tu mente moldea tu vida: cada pensamiento que permites, cada creencia que alimentas y cada decisión que tomas construyen tu carácter. Esta obra ofrece principios claros, herramientas de neuroplasticidad y ejercicios de reflexión basados en Romanos 12:2 para vencer pensamientos negativos, superar emociones destructivas y alinear la mente con la verdad, el amor y la voluntad divina."
+      },
+      'cerebro-jehova-diseno': {
+        title: "El Cerebro que Jehová Diseñó",
+        subtitle: "Un recorrido por el funcionamiento de la mente humana a la luz de los descubrimientos científicos y los principios bíblicos",
+        category: "Neurociencia, Psicología & Sabiduría Bíblica",
+        image: "elcerebroquejehovadiseño.jpeg",
+        synopsis: "Dios no dejó al azar la creación del cerebro humano. Cada conexión, cada emoción y cada pensamiento refleja Su sabiduría, propósito y amor. Este libro integra los descubrimientos más recientes de la neurociencia y la psicología con los principios eternos de la Biblia para ayudarte a comprender cómo funciona tu cerebro, transformar tu mente, optimizar tus procesos cognitivos y honrar al Diseñador Supremo (Salmo 139:14)."
+      },
+      'noviazgo': {
+        title: "El Noviazgo: Una Escuela de Sabiduría, no una Sentencia de Matrimonio",
+        subtitle: "Aprender a amar con propósito, discernir con madurez y decidir con sabiduría",
+        category: "Psicología & Relaciones",
+        image: "elnoviazgounaescueladesabiduria.jpeg",
+        synopsis: "El noviazgo no es el final del camino, sino el inicio de una formación integral. Ofrece una perspectiva bíblica y psicológica que proporciona herramientas prácticas para desarrollar el carácter, afianzar la amistad, reconocer señales de advertencia y edificar relaciones duraderas bajo principios sólidos."
+      },
+      'defensa-traduccion': {
+        title: "En Defensa de la Traducción del Nuevo Mundo",
+        subtitle: "Para lectores que buscan más que opiniones: evidencias, contexto y claridad",
+        category: "Crítica Textual & Filología Bíblica",
+        image: "endefensadelatraducciondelnuevomundo.jpeg",
+        synopsis: "Examen riguroso y honesto sobre las críticas dirigidas a la Traducción del Nuevo Mundo. A través del análisis directo de manuscritos antiguos, del griego koiné, del hebreo bíblico y de la historia de las traducciones, aporta criterios justos de evaluación y referencias académicas verificables."
+      },
+      'ciencia-fe': {
+        title: "Entre la Ciencia y la Fe: Una Mirada Psicológica a la Biblia",
+        subtitle: "Porque entender la mente también es acercarse a lo eterno",
+        category: "Neurociencia & Teología",
+        image: "entrelacienciaylafe.jpeg",
+        synopsis: "Un puente reflexivo entre el saber empírico y la trascendencia espiritual. Explora las narrativas, personajes y enseñanzas bíblicas bajo el lente de la psicología contemporánea y las ciencias cognitivas, revelando principios universales de salud mental y sentido vital."
+      },
+      'errores-psicologicos': {
+        title: "Errores Psicológicos que Destruyen la Fe",
+        subtitle: "Cómo los sesgos de la mente nublan la verdad y nos alejan de Dios",
+        category: "Ciencias Cognitivas & Conciencia",
+        image: "errorespsicologicosquedestruyenlafe.jpeg",
+        synopsis: "A través de 20 capítulos claros y profundos, esta obra enseña a identificar distorsiones cognitivas como el pensamiento todo o nada, el sesgo de confirmación, el catastrofismo y la comparación social. Proporciona métodos prácticos para renovar los esquemas de pensamiento y fundar la fe en la verdad."
+      },
+      '95-tesis': {
+        title: "Las 95 Tesis Psico Cristianas (Versión Actualizada)",
+        subtitle: "Fe que piensa. Psicología que transforma. Verdad que libera.",
+        category: "Psicología & Vida Cristiana",
+        image: "las95tesis.jpeg",
+        synopsis: "Una obra indispensable que integra la sabiduría eterna del Evangelio con los avances contemporáneos de la psicología para ofrecer una visión sólida, humana y transformadora del ser y su relación con Dios. A través de 95 tesis revisadas y ampliadas, aborda el trauma, la salud mental, las relaciones, el sufrimiento y el propósito cristiano con fundamentos bíblicos y pastorales aplicables a la vida cotidiana."
+      },
+      'emociones-biblia': {
+        title: "Las Emociones en la Biblia (Segunda Edición)",
+        subtitle: "Ciencia, fe y sabiduría para entender, aceptar y transformar lo que sentimos",
+        category: "Psicología Clínica & Neurociencia",
+        image: "lasemocionesenlabiblia.jpeg",
+        synopsis: "Edición ampliada y actualizada enriquecida con los descubrimientos más recientes de la neurociencia y la psicología clínica. A través de 19 capítulos prácticos y profundos, aborda tanto las emociones que duelen como las que construyen, ofreciendo ejercicios prácticos y un diccionario psicológico para la madurez emocional."
+      },
+      'psicologia-esperanza': {
+        title: "La Psicología de la Esperanza",
+        subtitle: "Cuando la ciencia y la Biblia coinciden en que siempre existe una razón para seguir adelante",
+        category: "Neurociencia & Resiliencia",
+        image: "lapsicologiadelaesperanza.jpeg",
+        synopsis: "La esperanza entendida como una poderosa fuerza psicológica, biológica y espiritual. Integra hallazgos en neurociencia con promesas bíblicas consoladoras para brindar estrategias prácticas frente al duelo, la ansiedad y momentos de crisis personal."
+      },
+      'luz-progresiva-primera': {
+        title: "Luz Progresiva: Historia, Psicología y Doctrina en los Testigos de Jehová",
+        subtitle: "La comprensión no es estática, sino progresiva",
+        category: "Historia, Psicología & Doctrina",
+        image: "luzprogresivaprimera.jpeg",
+        synopsis: "Un análisis histórico y psicológico sobre cómo la orientación y las doctrinas han evolucionado con el tiempo, y cómo estos ajustes no solo reflejan nuevas clarificaciones doctrinales, sino que también impactan profundamente en la mente y el corazón de los creyentes."
+      },
+      'luz-progresiva-segunda': {
+        title: "Luz Progresiva: Segunda Edición (Corregido y Ampliado)",
+        subtitle: "Entender más. Ver con claridad. Caminar con luz.",
+        category: "Edición Corregida & Ampliada",
+        image: "luzprogesivasegunda.jpeg",
+        synopsis: "Edición corregida y ampliada que profundiza en los orígenes del movimiento milenarista en los Estados Unidos a fines del siglo XIX, sus profecías apocalípticas, el crecimiento global, los métodos de enseñanza y los efectos psicológicos y sociales de pertenecer al grupo o decidir dejarlo."
+      },
+      'unicidad-trinidad': {
+        title: "Para creer en la Unicidad y en la Trinidad hay que ser Politeísta",
+        subtitle: "Una crítica histórica, filosófica y bíblica a dos modelos de concebir a Dios",
+        category: "Historia, Filosofía & Teología",
+        image: "paracreerenlaunicidad.jpeg",
+        synopsis: "Una indagación profunda y documentada sobre la pregunta: ¿Puede atribuirse plena divinidad a más de un sujeto sin comprometer el monoteísmo bíblico? Examina el desarrollo de los dogmas y concilios, su lógica interna y los manuscritos originales para lectores que buscan la verdad sin prejuicios."
+      }
+    };
+
+    // Funciones del Modal
+    const bookModal = document.getElementById('bookModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalSubtitle = document.getElementById('modalSubtitle');
+    const modalCategory = document.getElementById('modalCategory');
+    const modalSynopsis = document.getElementById('modalSynopsis');
+    const modalCta = document.getElementById('modalCta');
+
+    function openBookModal(key) {
+      const book = booksData[key];
+      if (!book) return;
+
+      modalImg.src = book.image;
+      modalImg.alt = book.title;
+      modalTitle.textContent = book.title;
+      modalSubtitle.textContent = book.subtitle;
+      modalCategory.textContent = book.category;
+      modalSynopsis.textContent = book.synopsis;
+      modalCta.href = `https://wa.me/522211983913?text=Hola,%20me%20interesa%20adquirir%20o%20conocer%20más%20del%20libro:%20${encodeURIComponent(book.title)}`;
+
+      bookModal.classList.add('open');
+      bookModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      lucide.createIcons();
+    }
+
+    function closeBookModal() {
+      bookModal.classList.remove('open');
+      bookModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    bookModal.addEventListener('click', (e) => {
+      if (e.target === bookModal) closeBookModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && bookModal.classList.contains('open')) {
+        closeBookModal();
+      }
+    });
+  </script>
+</body>
+</html>
