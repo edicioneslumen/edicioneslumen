@@ -763,18 +763,18 @@
       white-space: pre-line;
     }
 
-    /* CAJA ESPECIAL: LINK A LA SEGUNDA EDICIÓN DISPONIBLE */
+    /* CAJA LIMPIA Y NATURAL: SEGUNDA EDICIÓN DISPONIBLE */
     .second-edition-banner {
-      background: linear-gradient(135deg, rgba(226, 176, 83, 0.14), rgba(18, 24, 33, 0.9));
-      border: 1px solid var(--accent-gold);
+      background: linear-gradient(135deg, rgba(226, 176, 83, 0.12), rgba(18, 24, 33, 0.9));
+      border: 1px solid var(--border-subtle);
       border-radius: 14px;
-      padding: 1.1rem 1.3rem;
+      padding: 1rem 1.25rem;
       margin-bottom: 1.6rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      box-shadow: 0 4px 18px rgba(226, 176, 83, 0.15);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
     }
 
     .second-edition-banner .banner-text {
@@ -787,7 +787,7 @@
       text-transform: uppercase;
       letter-spacing: 1.2px;
       color: var(--accent-gold-light);
-      font-weight: 700;
+      font-weight: 600;
     }
 
     .second-edition-banner .banner-title {
@@ -1490,7 +1490,7 @@
         <h3 class="modal-title" id="modalTitle">Título de la Obra</h3>
         <p class="modal-subtitle" id="modalSubtitle">Subtítulo</p>
 
-        <!-- BANNER DINÁMICO QUE APARECE EN LA 1.ª EDICIÓN PARA IR A LA 2.ª EDICIÓN -->
+        <!-- BANNER LIMPIO Y NATURAL PARA IR A LA 2.ª EDICIÓN -->
         <div id="secondEditionContainer" style="display: none;"></div>
 
         <p class="modal-synopsis" id="modalSynopsis">Descripción del libro.</p>
@@ -1572,7 +1572,7 @@
 
     observeReveals();
 
-    // BASE DE DATOS DE LIBROS (Incluye portadas y contraportadas con sufijo '2.jpeg')
+    // BASE DE DATOS DE LIBROS
     const booksData = {
       'creer-sanar': {
         title: "Creer y Sanar: Una Mirada Psicológica desde Adentro",
@@ -1654,18 +1654,18 @@
         backImage: "las95tesis2.jpeg",
         synopsis: "Una obra indispensable que integra la sabiduría eterna del Evangelio con los avances contemporáneos de la psicología para ofrecer una visión sólida, humana y transformadora del ser y su relación con Dios. A través de 95 tesis revisadas y ampliadas, aborda el trauma, la salud mental, las relaciones, el sufrimiento y el propósito cristiano con fundamentos bíblicos y pastorales aplicables a la vida cotidiana."
       },
-      // PRIMERA EDICIÓN: Con su descripción original y enlace a la 2da edición
+      // PRIMERA EDICIÓN: Con su enlace natural a la 2da edición
       'emociones-biblia-primera': {
-        title: "Las Emociones en la Biblia (Primera Edición)",
+        title: "Las Emociones en la Biblia",
         subtitle: "La Biblia no solo habla a nuestra mente, sino también a nuestro corazón",
         category: "Psicología Bíblica & Fe",
         frontImage: "lasemocionesenlabiblia.jpeg",
         backImage: "lasemocionesenlabiblia2.jpeg",
         secondEditionKey: "emociones-biblia-segunda",
-        secondEditionLabel: "Segunda Edición (Ampliación 2026)",
+        secondEditionLabel: "Segunda Edición",
         synopsis: "La Biblia no solo habla a nuestra mente, sino también a nuestro corazón.\n\nEste libro explora las emociones humanas a la luz de las Escrituras, mostrando cómo personajes bíblicos experimentaron alegría, tristeza, miedo, enojo, amor, esperanza y muchas otras emociones.\n\nMás que entender lo que sentimos, se trata de descubrir cómo Dios se relaciona con nuestras emociones y cómo podemos llevar cada una de ellas a Su presencia.\n\n• Fundamentado en la Palabra de Dios\n• Reflexiones prácticas para la vida diaria\n• Descubre cómo Dios comprende y transforma tus emociones\n• Para creyentes que desean crecer en su vida espiritual y emocional"
       },
-      // SEGUNDA EDICIÓN: Con enlace de retroceso a la 1ra edición
+      // SEGUNDA EDICIÓN: Con botón para retroceder a la 1ra edición
       'emociones-biblia-segunda': {
         title: "Las Emociones en la Biblia (Segunda Edición)",
         subtitle: "Ciencia, fe y sabiduría para entender, aceptar y transformar lo que sentimos",
@@ -1683,20 +1683,20 @@
         backImage: "lapsicologiadelaesperanza2.jpeg",
         synopsis: "La esperanza entendida como una poderosa fuerza psicológica, biológica y espiritual. Integra hallazgos en neurociencia con promesas bíblicas consoladoras para brindar estrategias prácticas frente al duelo, la ansiedad y momentos de crisis personal."
       },
-      // PRIMERA EDICIÓN: Con su enlace a la 2da edición
+      // PRIMERA EDICIÓN: Con su enlace natural a la 2da edición
       'luz-progresiva-primera': {
-        title: "Luz Progresiva: Historia, Psicología y Doctrina en los Testigos de Jehová",
+        title: "Luz Progresiva",
         subtitle: "La comprensión no es estática, sino progresiva",
         category: "Historia, Psicología & Doctrina",
         frontImage: "luzprogresivaprimera.jpeg",
         backImage: "luzprogresivaprimera2.jpeg",
         secondEditionKey: "luz-progresiva-segunda",
-        secondEditionLabel: "Segunda Edición (Corregido y Ampliado)",
+        secondEditionLabel: "Segunda Edición",
         synopsis: "Un análisis histórico y psicológico sobre cómo la orientación y las doctrinas han evolucionado con el tiempo, y cómo estos ajustes no solo reflejan nuevas clarificaciones doctrinales, sino que también impactan profundamente en la mente y el corazón de los creyentes."
       },
-      // SEGUNDA EDICIÓN: Con enlace de retroceso a la 1ra edición
+      // SEGUNDA EDICIÓN: Con botón para retroceder a la 1ra edición
       'luz-progresiva-segunda': {
-        title: "Luz Progresiva: Segunda Edición (Corregido y Ampliado)",
+        title: "Luz Progresiva (Segunda Edición)",
         subtitle: "Entender más. Ver con claridad. Caminar con luz.",
         category: "Edición Corregida & Ampliada",
         frontImage: "luzprogesivasegunda.jpeg",
@@ -1781,17 +1781,17 @@
         btnBackToFirst.onclick = null;
       }
 
-      // Banner interactivo si tiene segunda edición disponible
+      // Banner limpio y natural si tiene segunda edición disponible
       if (book.secondEditionKey && booksData[book.secondEditionKey]) {
         secondEditionContainer.style.display = 'block';
         secondEditionContainer.innerHTML = `
           <div class="second-edition-banner">
             <div class="banner-text">
-              <span class="banner-label">¡Nueva Edición Disponible!</span>
+              <span class="banner-label">Segunda edición disponible</span>
               <span class="banner-title">${book.secondEditionLabel || 'Segunda Edición'}</span>
             </div>
             <button type="button" class="banner-btn" onclick="openBookModal('${book.secondEditionKey}')">
-              <i data-lucide="sparkles" style="width: 14px;"></i> Ver 2.ª Edición
+              <i data-lucide="book-open" style="width: 14px;"></i> Ver Segunda Edición
             </button>
           </div>
         `;
