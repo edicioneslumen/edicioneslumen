@@ -548,12 +548,12 @@
       background: #0f151e;
       border: 1px solid var(--border-subtle);
       border-radius: 20px;
-      max-width: 860px;
+      max-width: 960px;
       width: 100%;
       max-height: 90vh;
       overflow-y: auto;
       display: grid;
-      grid-template-columns: 340px 1fr;
+      grid-template-columns: 410px 1fr;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
       position: relative;
       transform: scale(0.95);
@@ -587,27 +587,148 @@
       color: #000;
     }
 
-    .modal-cover-wrap {
-      background: #080a0e;
+    /* CONTENEDOR MULTI-VISTA DE IMÁGENES (PORTADA Y CONTRAPORTADA) */
+    .modal-media-wrap {
+      background: #07090d;
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      border-right: 1px solid var(--border-light);
+    }
+
+    .modal-view-tabs {
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.3rem;
+      border-radius: 30px;
+      border: 1px solid var(--border-light);
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .modal-tab-btn {
+      flex: 1;
+      padding: 0.45rem 0.8rem;
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 20px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: var(--transition);
+      font-family: inherit;
+    }
+
+    .modal-tab-btn.active {
+      background: var(--accent-gold);
+      color: #0b0d11;
+      box-shadow: 0 2px 10px rgba(226, 176, 83, 0.4);
+    }
+
+    .modal-cover-display {
+      position: relative;
+      width: 100%;
+      max-width: 310px;
+      height: 420px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #0f151e;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.8rem;
     }
 
-    .modal-cover-wrap img {
-      max-width: 100%;
-      max-height: 440px;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    .modal-book-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.4s ease;
+      transform: scale(0.97);
+      background: #090c10;
+    }
+
+    .modal-book-img.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+
+    .modal-thumbs-row {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: center;
+    }
+
+    .thumb-btn {
+      width: 52px;
+      height: 72px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      cursor: pointer;
+      background: #141b24;
+      opacity: 0.6;
+      transition: var(--transition);
+      padding: 0;
+    }
+
+    .thumb-btn.active, .thumb-btn:hover {
+      opacity: 1;
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .thumb-btn img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
     }
 
     .modal-details {
-      padding: 2.2rem;
+      padding: 2.4rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
+    }
+
+    /* BOTÓN RETROCEDER A LA PRIMERA EDICIÓN */
+    .back-to-first-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(226, 176, 83, 0.1);
+      border: 1px solid var(--border-subtle);
+      color: var(--accent-gold);
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      align-self: flex-start;
+      margin-bottom: 0.9rem;
+      font-family: inherit;
+    }
+
+    .back-to-first-btn:hover {
+      background: var(--accent-gold);
+      color: #0b0d11;
+      transform: translateX(-3px);
     }
 
     .modal-category {
@@ -621,7 +742,7 @@
 
     .modal-title {
       font-family: var(--font-title);
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       line-height: 1.25;
       margin-bottom: 0.6rem;
       color: #fff;
@@ -631,35 +752,70 @@
       color: var(--accent-gold-light);
       font-style: italic;
       margin-bottom: 1.3rem;
-      font-size: 1.05rem;
+      font-size: 1.02rem;
     }
 
     .modal-synopsis {
       color: var(--text-secondary);
-      font-size: 0.96rem;
-      line-height: 1.7;
-      margin-bottom: 1.8rem;
-    }
-
-    .feature-list {
-      list-style: none;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.1rem;
-    }
-
-    .feature-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.8rem;
-      color: var(--text-secondary);
       font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1.6rem;
+      white-space: pre-line;
     }
 
-    .feature-item i {
-      color: var(--accent-gold);
-      flex-shrink: 0;
-      margin-top: 3px;
+    /* CAJA ESPECIAL: LINK A LA SEGUNDA EDICIÓN DISPONIBLE */
+    .second-edition-banner {
+      background: linear-gradient(135deg, rgba(226, 176, 83, 0.14), rgba(18, 24, 33, 0.9));
+      border: 1px solid var(--accent-gold);
+      border-radius: 14px;
+      padding: 1.1rem 1.3rem;
+      margin-bottom: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: 0 4px 18px rgba(226, 176, 83, 0.15);
+    }
+
+    .second-edition-banner .banner-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .second-edition-banner .banner-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--accent-gold-light);
+      font-weight: 700;
+    }
+
+    .second-edition-banner .banner-title {
+      font-size: 0.95rem;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .second-edition-banner .banner-btn {
+      background: var(--accent-gold);
+      color: #0b0d11;
+      padding: 0.45rem 1rem;
+      border-radius: 20px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+
+    .second-edition-banner .banner-btn:hover {
+      background: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px var(--accent-glow);
     }
 
     /* CONTACTO */
@@ -742,6 +898,7 @@
       .grid-4 { grid-template-columns: repeat(2, 1fr); }
       .grid-3 { grid-template-columns: repeat(2, 1fr); }
       .split-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .modal-box { grid-template-columns: 360px 1fr; }
     }
 
     @media (max-width: 768px) {
@@ -767,24 +924,32 @@
       .grid-2, .grid-3, .grid-4 {
         grid-template-columns: 1fr;
       }
-      .feature-list {
-        grid-template-columns: 1fr;
-      }
       .page-section {
         padding: 5.5rem 1.2rem 3.5rem;
       }
       .modal-box {
         grid-template-columns: 1fr;
-        max-height: 85vh;
+        max-height: 88vh;
       }
-      .modal-cover-wrap {
-        padding: 1.2rem;
+      .modal-media-wrap {
+        border-right: none;
+        border-bottom: 1px solid var(--border-light);
+        padding: 1.4rem 1rem;
       }
-      .modal-cover-wrap img {
-        max-height: 260px;
+      .modal-cover-display {
+        height: 310px;
+        max-width: 230px;
       }
       .modal-details {
-        padding: 1.4rem;
+        padding: 1.5rem 1.2rem;
+      }
+      .second-edition-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .second-edition-banner .banner-btn {
+        width: 100%;
+        justify-content: center;
       }
     }
 
@@ -827,7 +992,7 @@
   </header>
 
   <!-- ============================================== -->
-  <!-- VISTA 1: PÁGINA PRINCIPAL INSTITUCIONAL       -->
+  <!-- VISTA 1: PÁGINA PRINCIPAL INSTITUCIONAL        -->
   <!-- ============================================== -->
   <div id="mainPageView" class="view-page">
     <main>
@@ -1052,11 +1217,11 @@
         <div class="section-header">
           <h1 class="section-title">Libros</h1>
           <p class="section-subtitle">
-            Haz clic en cualquiera de las portadas para abrir su descripción completa, detalles de contenido y ficha técnica.
+            Haz clic en cualquiera de las obras para examinar su portada, contraportada, detalles de contenido y ficha técnica.
           </p>
         </div>
 
-        <!-- LISTADO DE LIBROS EN ORDEN ALFABÉTICO (15 OBRAS DE TU CARPETA) -->
+        <!-- LISTADO DE LIBROS EN EL MENÚ (Las segundas ediciones se consultan dentro de la primera edición) -->
         <div class="books-grid">
 
           <!-- 1. Creer y Sanar -->
@@ -1137,7 +1302,7 @@
           <!-- 6. El Noviazgo: Una Escuela de Sabiduría -->
           <article class="book-item reveal delay-1" onclick="openBookModal('noviazgo')">
             <div class="book-cover-wrap">
-              <img src="elnoviazgounaescueladesabiduria.jpeg" alt="Portada El noviazgo: una escuela de sabiduría, no una sentencia de matrimonio" class="book-cover" loading="lazy">
+              <img src="elnoviazgounaescueladesabiduria.jpeg" alt="Portada El noviazgo: una escuela de sabiduría" class="book-cover" loading="lazy">
               <div class="book-hover-badge">
                 <i data-lucide="book-open"></i>
                 <span>Ver Detalles</span>
@@ -1167,7 +1332,7 @@
           <!-- 8. Entre la Ciencia y la Fe -->
           <article class="book-item reveal delay-3" onclick="openBookModal('ciencia-fe')">
             <div class="book-cover-wrap">
-              <img src="entrelacienciaylafe.jpeg" alt="Portada Entre la Ciencia y la Fe: Una mirada psicológica a la Biblia" class="book-cover" loading="lazy">
+              <img src="entrelacienciaylafe.jpeg" alt="Portada Entre la Ciencia y la Fe" class="book-cover" loading="lazy">
               <div class="book-hover-badge">
                 <i data-lucide="book-open"></i>
                 <span>Ver Detalles</span>
@@ -1209,10 +1374,10 @@
             </div>
           </article>
 
-          <!-- 11. Las Emociones en la Biblia -->
-          <article class="book-item reveal delay-1" onclick="openBookModal('emociones-biblia')">
+          <!-- 11. Las Emociones en la Biblia (Primera Edición en catálogo principal) -->
+          <article class="book-item reveal delay-1" onclick="openBookModal('emociones-biblia-primera')">
             <div class="book-cover-wrap">
-              <img src="lasemocionesenlabiblia.jpeg" alt="Portada Las Emociones en la Biblia" class="book-cover" loading="lazy">
+              <img src="lasemocionesenlabiblia.jpeg" alt="Portada Las Emociones en la Biblia (Primera Edición)" class="book-cover" loading="lazy">
               <div class="book-hover-badge">
                 <i data-lucide="book-open"></i>
                 <span>Ver Detalles</span>
@@ -1220,7 +1385,7 @@
             </div>
             <div class="book-info">
               <h3 class="book-title">Las Emociones en la Biblia</h3>
-              <span class="book-tag">Psicología Clínica & Fe</span>
+              <span class="book-tag">Psicología Bíblica & Fe</span>
             </div>
           </article>
 
@@ -1239,10 +1404,10 @@
             </div>
           </article>
 
-          <!-- 13. Luz Progresiva (Primera Edición) -->
+          <!-- 13. Luz Progresiva (Primera Edición en catálogo principal) -->
           <article class="book-item reveal delay-3" onclick="openBookModal('luz-progresiva-primera')">
             <div class="book-cover-wrap">
-              <img src="luzprogresivaprimera.jpeg" alt="Portada Luz Progresiva: Historia, psicología y doctrina en los Testigos de Jehová" class="book-cover" loading="lazy">
+              <img src="luzprogresivaprimera.jpeg" alt="Portada Luz Progresiva" class="book-cover" loading="lazy">
               <div class="book-hover-badge">
                 <i data-lucide="book-open"></i>
                 <span>Ver Detalles</span>
@@ -1254,23 +1419,8 @@
             </div>
           </article>
 
-          <!-- 14. Luz Progresiva (Segunda Edición) -->
-          <article class="book-item reveal delay-4" onclick="openBookModal('luz-progresiva-segunda')">
-            <div class="book-cover-wrap">
-              <img src="luzprogesivasegunda.jpeg" alt="Portada Luz Progresiva: Segunda Edición Corregido y Ampliado" class="book-cover" loading="lazy">
-              <div class="book-hover-badge">
-                <i data-lucide="book-open"></i>
-                <span>Ver Detalles</span>
-              </div>
-            </div>
-            <div class="book-info">
-              <h3 class="book-title">Luz Progresiva (Segunda Edición)</h3>
-              <span class="book-tag">Edición Corregida & Ampliada</span>
-            </div>
-          </article>
-
-          <!-- 15. Para creer en la Unicidad y en la Trinidad -->
-          <article class="book-item reveal delay-5" onclick="openBookModal('unicidad-trinidad')">
+          <!-- 14. Para creer en la Unicidad y en la Trinidad -->
+          <article class="book-item reveal delay-4" onclick="openBookModal('unicidad-trinidad')">
             <div class="book-cover-wrap">
               <img src="paracreerenlaunicidad.jpeg" alt="Portada Para creer en la Unicidad y en la Trinidad hay que ser Politeísta" class="book-cover" loading="lazy">
               <div class="book-hover-badge">
@@ -1296,20 +1446,55 @@
     </div>
   </div>
 
-  <!-- MODAL DE DESCRIPCIÓN DE LIBROS -->
+  <!-- MODAL DE DESCRIPCIÓN DE LIBROS (PORTADA + CONTRAPORTADA + NAVEGACIÓN ENTRE EDICIONES) -->
   <div class="modal-backdrop" id="bookModal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal-box">
       <button class="modal-close" onclick="closeBookModal()" aria-label="Cerrar ventana">
         <i data-lucide="x"></i>
       </button>
-      <div class="modal-cover-wrap">
-        <img id="modalImg" src="" alt="Portada del libro">
+
+      <!-- SECCIÓN MULTIMEDIA: SELECTOR PORTADA Y CONTRAPORTADA -->
+      <div class="modal-media-wrap">
+        <div class="modal-view-tabs">
+          <button type="button" class="modal-tab-btn active" id="tabFront" onclick="switchBookSide('front')">
+            <i data-lucide="image" style="width: 15px;"></i> Portada
+          </button>
+          <button type="button" class="modal-tab-btn" id="tabBack" onclick="switchBookSide('back')">
+            <i data-lucide="layers" style="width: 15px;"></i> Contraportada
+          </button>
+        </div>
+
+        <div class="modal-cover-display">
+          <img id="modalImgFront" class="modal-book-img active" src="" alt="Portada frontal del libro">
+          <img id="modalImgBack" class="modal-book-img" src="" alt="Contraportada del libro" onerror="this.onerror=null; this.src=document.getElementById('modalImgFront').src;">
+        </div>
+
+        <div class="modal-thumbs-row">
+          <button type="button" class="thumb-btn active" id="thumbFront" onclick="switchBookSide('front')" aria-label="Ver portada">
+            <img id="thumbImgFront" src="" alt="Miniatura Portada">
+          </button>
+          <button type="button" class="thumb-btn" id="thumbBack" onclick="switchBookSide('back')" aria-label="Ver contraportada">
+            <img id="thumbImgBack" src="" alt="Miniatura Contraportada" onerror="this.onerror=null; this.src=document.getElementById('thumbImgFront').src;">
+          </button>
+        </div>
       </div>
+
+      <!-- DETALLES, SINOPSIS Y BANNER DE SEGUNDA EDICIÓN -->
       <div class="modal-details">
+        <!-- BOTÓN RETROCEDER (SI SE ESTÁ VIENDO UNA SEGUNDA EDICIÓN) -->
+        <button type="button" id="btnBackToFirst" class="back-to-first-btn" style="display: none;">
+          <i data-lucide="arrow-left" style="width: 15px;"></i> Volver a la 1.ª Edición
+        </button>
+
         <span class="modal-category" id="modalCategory">Línea de Publicación</span>
         <h3 class="modal-title" id="modalTitle">Título de la Obra</h3>
         <p class="modal-subtitle" id="modalSubtitle">Subtítulo</p>
+
+        <!-- BANNER DINÁMICO QUE APARECE EN LA 1.ª EDICIÓN PARA IR A LA 2.ª EDICIÓN -->
+        <div id="secondEditionContainer" style="display: none;"></div>
+
         <p class="modal-synopsis" id="modalSynopsis">Descripción del libro.</p>
+        
         <div>
           <a href="#" id="modalCta" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
             <i data-lucide="shopping-bag" style="width: 17px;"></i> Solicitar este libro por WhatsApp
@@ -1387,135 +1572,233 @@
 
     observeReveals();
 
-    // Base de datos de los 15 libros existentes en la carpeta
+    // BASE DE DATOS DE LIBROS (Incluye portadas y contraportadas con sufijo '2.jpeg')
     const booksData = {
       'creer-sanar': {
         title: "Creer y Sanar: Una Mirada Psicológica desde Adentro",
         subtitle: "¿Puede la fe ser una herramienta para sanar heridas emocionales?",
         category: "Salud Mental & Espiritualidad",
-        image: "creerysanar.jpeg",
+        frontImage: "creerysanar.jpeg",
+        backImage: "creerysanar2.jpeg",
         synopsis: "Una obra que explora cómo la espiritualidad y la psicología trabajan unidas para sanar y vigorizar el bienestar mental. A través de un enfoque integral y reflexiones profundas, revela cómo la creencia consciente conduce al autoconocimiento, la sanación interior y una vida plena y equilibrada."
       },
       'defendiendo-fe': {
         title: "Defendiendo la Fe: Respuestas Bíblicas a las Críticas más Comunes contra los Testigos de Jehová",
         subtitle: "Razones para creer: una apologética bíblica documentada",
         category: "Apologética & Estudios Bíblicos",
-        image: "defendiendolafe.jpeg",
+        frontImage: "defendiendolafe.jpeg",
+        backImage: "defendiendolafe2.jpeg",
         synopsis: "En un entorno donde abundan los prejuicios y la desinformación, esta obra presenta explicaciones claras, lógicas y respetuosas fundamentadas en la Biblia y fuentes históricas. Brinda herramientas para fortalecer la fe personal y dialogar constructivamente con serenidad y base documental."
       },
       'antiguo-testamento-jesus': {
         title: "El Antiguo Testamento citado por Jesús",
         subtitle: "Las Escrituras Hebreo-Arameas en las enseñanzas del Mesías",
         category: "Estudios Bíblicos & Exégesis",
-        image: "elantiguotestamentocitadoporjesus.jpeg",
+        frontImage: "elantiguotestamentocitadoporjesus.jpeg",
+        backImage: "elantiguotestamentocitadoporjesus2.jpeg",
         synopsis: "Jesús fundamentó sus enseñanzas en la Ley, los Profetas y los Escritos sagrados que Israel recibió durante siglos. Este libro examina más de 300 citas y alusiones organizadas por libro bíblico, analizando el contexto original, su trasfondo histórico y lingüístico hebreo, y el cumplimiento de las profecías mesiánicas."
       },
       'el-arte-de-renovar-la-mente': {
         title: "El Arte de Renovar la Mente: Transforma tu Pensamiento, Transforma tu Vida",
         subtitle: "Guía práctica y profunda basada en la sabiduría bíblica y la ciencia del comportamiento",
         category: "Neuroplasticidad & Terapia Cognitiva",
-        image: "elartederenovarlamente.jpeg",
+        frontImage: "elartederenovarlamente.jpeg",
+        backImage: "elartederenovarlamente2.jpeg",
         synopsis: "Tu mente moldea tu vida: cada pensamiento que permites, cada creencia que alimentas y cada decisión que tomas construyen tu carácter. Esta obra ofrece principios claros, herramientas de neuroplasticidad y ejercicios de reflexión basados en Romanos 12:2 para vencer pensamientos negativos, superar emociones destructivas y alinear la mente con la verdad, el amor y la voluntad divina."
       },
       'cerebro-jehova-diseno': {
         title: "El Cerebro que Jehová Diseñó",
         subtitle: "Un recorrido por el funcionamiento de la mente humana a la luz de los descubrimientos científicos y los principios bíblicos",
         category: "Neurociencia, Psicología & Sabiduría Bíblica",
-        image: "elcerebroquejehovadiseño.jpeg",
+        frontImage: "elcerebroquejehovadiseño.jpeg",
+        backImage: "elcerebroquejehovadiseño2.jpeg",
         synopsis: "Dios no dejó al azar la creación del cerebro humano. Cada conexión, cada emoción y cada pensamiento refleja Su sabiduría, propósito y amor. Este libro integra los descubrimientos más recientes de la neurociencia y la psicología con los principios eternos de la Biblia para ayudarte a comprender cómo funciona tu cerebro, transformar tu mente, optimizar tus procesos cognitivos y honrar al Diseñador Supremo (Salmo 139:14)."
       },
       'noviazgo': {
         title: "El Noviazgo: Una Escuela de Sabiduría, no una Sentencia de Matrimonio",
         subtitle: "Aprender a amar con propósito, discernir con madurez y decidir con sabiduría",
         category: "Psicología & Relaciones",
-        image: "elnoviazgounaescueladesabiduria.jpeg",
+        frontImage: "elnoviazgounaescueladesabiduria.jpeg",
+        backImage: "elnoviazgounaescueladesabiduria2.jpeg",
         synopsis: "El noviazgo no es el final del camino, sino el inicio de una formación integral. Ofrece una perspectiva bíblica y psicológica que proporciona herramientas prácticas para desarrollar el carácter, afianzar la amistad, reconocer señales de advertencia y edificar relaciones duraderas bajo principios sólidos."
       },
       'defensa-traduccion': {
         title: "En Defensa de la Traducción del Nuevo Mundo",
         subtitle: "Para lectores que buscan más que opiniones: evidencias, contexto y claridad",
         category: "Crítica Textual & Filología Bíblica",
-        image: "endefensadelatraducciondelnuevomundo.jpeg",
+        frontImage: "endefensadelatraducciondelnuevomundo.jpeg",
+        backImage: "endefensadelatraducciondelnuevomundo2.jpeg",
         synopsis: "Examen riguroso y honesto sobre las críticas dirigidas a la Traducción del Nuevo Mundo. A través del análisis directo de manuscritos antiguos, del griego koiné, del hebreo bíblico y de la historia de las traducciones, aporta criterios justos de evaluación y referencias académicas verificables."
       },
       'ciencia-fe': {
         title: "Entre la Ciencia y la Fe: Una Mirada Psicológica a la Biblia",
         subtitle: "Porque entender la mente también es acercarse a lo eterno",
         category: "Neurociencia & Teología",
-        image: "entrelacienciaylafe.jpeg",
+        frontImage: "entrelacienciaylafe.jpeg",
+        backImage: "entrelacienciaylafe2.jpeg",
         synopsis: "Un puente reflexivo entre el saber empírico y la trascendencia espiritual. Explora las narrativas, personajes y enseñanzas bíblicas bajo el lente de la psicología contemporánea y las ciencias cognitivas, revelando principios universales de salud mental y sentido vital."
       },
       'errores-psicologicos': {
         title: "Errores Psicológicos que Destruyen la Fe",
         subtitle: "Cómo los sesgos de la mente nublan la verdad y nos alejan de Dios",
         category: "Ciencias Cognitivas & Conciencia",
-        image: "errorespsicologicosquedestruyenlafe.jpeg",
+        frontImage: "errorespsicologicosquedestruyenlafe.jpeg",
+        backImage: "errorespsicologicosquedestruyenlafe2.jpeg",
         synopsis: "A través de 20 capítulos claros y profundos, esta obra enseña a identificar distorsiones cognitivas como el pensamiento todo o nada, el sesgo de confirmación, el catastrofismo y la comparación social. Proporciona métodos prácticos para renovar los esquemas de pensamiento y fundar la fe en la verdad."
       },
       '95-tesis': {
         title: "Las 95 Tesis Psico Cristianas (Versión Actualizada)",
         subtitle: "Fe que piensa. Psicología que transforma. Verdad que libera.",
         category: "Psicología & Vida Cristiana",
-        image: "las95tesis.jpeg",
+        frontImage: "las95tesis.jpeg",
+        backImage: "las95tesis2.jpeg",
         synopsis: "Una obra indispensable que integra la sabiduría eterna del Evangelio con los avances contemporáneos de la psicología para ofrecer una visión sólida, humana y transformadora del ser y su relación con Dios. A través de 95 tesis revisadas y ampliadas, aborda el trauma, la salud mental, las relaciones, el sufrimiento y el propósito cristiano con fundamentos bíblicos y pastorales aplicables a la vida cotidiana."
       },
-      'emociones-biblia': {
+      // PRIMERA EDICIÓN: Con su descripción original y enlace a la 2da edición
+      'emociones-biblia-primera': {
+        title: "Las Emociones en la Biblia (Primera Edición)",
+        subtitle: "La Biblia no solo habla a nuestra mente, sino también a nuestro corazón",
+        category: "Psicología Bíblica & Fe",
+        frontImage: "lasemocionesenlabiblia.jpeg",
+        backImage: "lasemocionesenlabiblia2.jpeg",
+        secondEditionKey: "emociones-biblia-segunda",
+        secondEditionLabel: "Segunda Edición (Ampliación 2026)",
+        synopsis: "La Biblia no solo habla a nuestra mente, sino también a nuestro corazón.\n\nEste libro explora las emociones humanas a la luz de las Escrituras, mostrando cómo personajes bíblicos experimentaron alegría, tristeza, miedo, enojo, amor, esperanza y muchas otras emociones.\n\nMás que entender lo que sentimos, se trata de descubrir cómo Dios se relaciona con nuestras emociones y cómo podemos llevar cada una de ellas a Su presencia.\n\n• Fundamentado en la Palabra de Dios\n• Reflexiones prácticas para la vida diaria\n• Descubre cómo Dios comprende y transforma tus emociones\n• Para creyentes que desean crecer en su vida espiritual y emocional"
+      },
+      // SEGUNDA EDICIÓN: Con enlace de retroceso a la 1ra edición
+      'emociones-biblia-segunda': {
         title: "Las Emociones en la Biblia (Segunda Edición)",
         subtitle: "Ciencia, fe y sabiduría para entender, aceptar y transformar lo que sentimos",
-        category: "Psicología Clínica & Neurociencia",
-        image: "lasemocionesenlabiblia.jpeg",
-        synopsis: "Edición ampliada y actualizada enriquecida con los descubrimientos más recientes de la neurociencia y la psicología clínica. A través de 19 capítulos prácticos y profundos, aborda tanto las emociones que duelen como las que construyen, ofreciendo ejercicios prácticos y un diccionario psicológico para la madurez emocional."
+        category: "Psicología Clínica, Neurociencia & Fe",
+        frontImage: "lasemocionesenlabibliasegunda.jpeg",
+        backImage: "lasemocionesenlabibliasegunda2.jpeg",
+        previousEditionKey: "emociones-biblia-primera",
+        synopsis: "ENTENDER LO QUE SIENTES A LA LUZ DE LA PALABRA DE DIOS Y LA CIENCIA\n\nLas emociones no son un obstáculo para tu vida espiritual. Son parte de la creación de Dios.\n\nEsta segunda edición de Las emociones en la Biblia amplía y actualiza una obra que ha tocado miles de vidas, integrando los descubrimientos más recientes de la neurociencia y la psicología con la sabiduría atemporal de las Escrituras.\n\nA través de 19 capítulos profundos y prácticos, explorarás tanto las emociones que duelen como las que construyen, aprendiendo a comprenderlas, aceptarlas y transformarlas con la ayuda de Dios.\n\n• Comprensión bíblica y científica de cada emoción\n• Personajes bíblicos reales que sintieron como tú\n• Herramientas prácticas para la vida diaria\n• Aplicaciones clínicas basadas en evidencia\n• Edición ampliada y actualizada 2026 con nuevos contenidos, ejercicios prácticos y diccionario psicológico"
       },
       'psicologia-esperanza': {
         title: "La Psicología de la Esperanza",
         subtitle: "Cuando la ciencia y la Biblia coinciden en que siempre existe una razón para seguir adelante",
         category: "Neurociencia & Resiliencia",
-        image: "lapsicologiadelaesperanza.jpeg",
+        frontImage: "lapsicologiadelaesperanza.jpeg",
+        backImage: "lapsicologiadelaesperanza2.jpeg",
         synopsis: "La esperanza entendida como una poderosa fuerza psicológica, biológica y espiritual. Integra hallazgos en neurociencia con promesas bíblicas consoladoras para brindar estrategias prácticas frente al duelo, la ansiedad y momentos de crisis personal."
       },
+      // PRIMERA EDICIÓN: Con su enlace a la 2da edición
       'luz-progresiva-primera': {
         title: "Luz Progresiva: Historia, Psicología y Doctrina en los Testigos de Jehová",
         subtitle: "La comprensión no es estática, sino progresiva",
         category: "Historia, Psicología & Doctrina",
-        image: "luzprogresivaprimera.jpeg",
+        frontImage: "luzprogresivaprimera.jpeg",
+        backImage: "luzprogresivaprimera2.jpeg",
+        secondEditionKey: "luz-progresiva-segunda",
+        secondEditionLabel: "Segunda Edición (Corregido y Ampliado)",
         synopsis: "Un análisis histórico y psicológico sobre cómo la orientación y las doctrinas han evolucionado con el tiempo, y cómo estos ajustes no solo reflejan nuevas clarificaciones doctrinales, sino que también impactan profundamente en la mente y el corazón de los creyentes."
       },
+      // SEGUNDA EDICIÓN: Con enlace de retroceso a la 1ra edición
       'luz-progresiva-segunda': {
         title: "Luz Progresiva: Segunda Edición (Corregido y Ampliado)",
         subtitle: "Entender más. Ver con claridad. Caminar con luz.",
         category: "Edición Corregida & Ampliada",
-        image: "luzprogesivasegunda.jpeg",
+        frontImage: "luzprogesivasegunda.jpeg",
+        backImage: "luzprogesivasegunda2.jpeg",
+        previousEditionKey: "luz-progresiva-primera",
         synopsis: "Edición corregida y ampliada que profundiza en los orígenes del movimiento milenarista en los Estados Unidos a fines del siglo XIX, sus profecías apocalípticas, el crecimiento global, los métodos de enseñanza y los efectos psicológicos y sociales de pertenecer al grupo o decidir dejarlo."
       },
       'unicidad-trinidad': {
         title: "Para creer en la Unicidad y en la Trinidad hay que ser Politeísta",
         subtitle: "Una crítica histórica, filosófica y bíblica a dos modelos de concebir a Dios",
         category: "Historia, Filosofía & Teología",
-        image: "paracreerenlaunicidad.jpeg",
+        frontImage: "paracreerenlaunicidad.jpeg",
+        backImage: "paracreerenlaunicidad2.jpeg",
         synopsis: "Una indagación profunda y documentada sobre la pregunta: ¿Puede atribuirse plena divinidad a más de un sujeto sin comprometer el monoteísmo bíblico? Examina el desarrollo de los dogmas y concilios, su lógica interna y los manuscritos originales para lectores que buscan la verdad sin prejuicios."
       }
     };
 
-    // Funciones del Modal
+    // Funciones del Modal con soporte para Portada y Contraportada
     const bookModal = document.getElementById('bookModal');
-    const modalImg = document.getElementById('modalImg');
+    const modalImgFront = document.getElementById('modalImgFront');
+    const modalImgBack = document.getElementById('modalImgBack');
+    const thumbImgFront = document.getElementById('thumbImgFront');
+    const thumbImgBack = document.getElementById('thumbImgBack');
+    const tabFront = document.getElementById('tabFront');
+    const tabBack = document.getElementById('tabBack');
+    const thumbFront = document.getElementById('thumbFront');
+    const thumbBack = document.getElementById('thumbBack');
     const modalTitle = document.getElementById('modalTitle');
     const modalSubtitle = document.getElementById('modalSubtitle');
     const modalCategory = document.getElementById('modalCategory');
     const modalSynopsis = document.getElementById('modalSynopsis');
     const modalCta = document.getElementById('modalCta');
+    const secondEditionContainer = document.getElementById('secondEditionContainer');
+    const btnBackToFirst = document.getElementById('btnBackToFirst');
+
+    function switchBookSide(side) {
+      if (side === 'front') {
+        modalImgFront.classList.add('active');
+        modalImgBack.classList.remove('active');
+        tabFront.classList.add('active');
+        tabBack.classList.remove('active');
+        thumbFront.classList.add('active');
+        thumbBack.classList.remove('active');
+      } else {
+        modalImgBack.classList.add('active');
+        modalImgFront.classList.remove('active');
+        tabBack.classList.add('active');
+        tabFront.classList.remove('active');
+        thumbBack.classList.add('active');
+        thumbFront.classList.remove('active');
+      }
+    }
 
     function openBookModal(key) {
       const book = booksData[key];
       if (!book) return;
 
-      modalImg.src = book.image;
-      modalImg.alt = book.title;
+      // Cargar imágenes de portada y contraportada
+      modalImgFront.src = book.frontImage;
+      modalImgFront.alt = `Portada: ${book.title}`;
+      modalImgBack.src = book.backImage;
+      modalImgBack.alt = `Contraportada: ${book.title}`;
+
+      thumbImgFront.src = book.frontImage;
+      thumbImgBack.src = book.backImage;
+
+      // Restablecer vista inicial a Portada
+      switchBookSide('front');
+
       modalTitle.textContent = book.title;
       modalSubtitle.textContent = book.subtitle;
       modalCategory.textContent = book.category;
       modalSynopsis.textContent = book.synopsis;
       modalCta.href = `https://wa.me/522211983913?text=Hola,%20me%20interesa%20adquirir%20o%20conocer%20más%20del%20libro:%20${encodeURIComponent(book.title)}`;
+
+      // Botón para retroceder a la primera edición si es una segunda edición
+      if (book.previousEditionKey) {
+        btnBackToFirst.style.display = 'inline-flex';
+        btnBackToFirst.onclick = () => openBookModal(book.previousEditionKey);
+      } else {
+        btnBackToFirst.style.display = 'none';
+        btnBackToFirst.onclick = null;
+      }
+
+      // Banner interactivo si tiene segunda edición disponible
+      if (book.secondEditionKey && booksData[book.secondEditionKey]) {
+        secondEditionContainer.style.display = 'block';
+        secondEditionContainer.innerHTML = `
+          <div class="second-edition-banner">
+            <div class="banner-text">
+              <span class="banner-label">¡Nueva Edición Disponible!</span>
+              <span class="banner-title">${book.secondEditionLabel || 'Segunda Edición'}</span>
+            </div>
+            <button type="button" class="banner-btn" onclick="openBookModal('${book.secondEditionKey}')">
+              <i data-lucide="sparkles" style="width: 14px;"></i> Ver 2.ª Edición
+            </button>
+          </div>
+        `;
+      } else {
+        secondEditionContainer.style.display = 'none';
+        secondEditionContainer.innerHTML = '';
+      }
 
       bookModal.classList.add('open');
       bookModal.setAttribute('aria-hidden', 'false');
